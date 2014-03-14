@@ -5,12 +5,13 @@ The code is based on Brendan Frey's science paper "Clustering by Passing Message
 http://www.sciencemag.org/content/315/5814/972.short
  
  
-Compile
+*Compile*
 
 g++ affinity_propagation -o ap
 
 
-Execute
+*Execute*
+
 ap
 
 
