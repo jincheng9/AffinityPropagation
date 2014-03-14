@@ -5,10 +5,19 @@
 #include <algorithm>
 using namespace std;
 
+//N is the number of two-dimension data points
+//S is the similarity matrix
+//R is the responsibility matrix
+//A is the availabiltiy matrix
+//iter is the maximum number of iterations
+//lambda is the damping factor
 const int N = 25;
 double S[N][N] = {0};
 double R[N][N] = {0};
 double A[N][N] = {0};
+int iter = 230;
+double lambda = 0.9;
+
 const char* dataFileName = "ToyProblemData.txt";
 void readS(double S[N][N], const char* dfn) {
 	//read data 
@@ -44,8 +53,7 @@ void readS(double S[N][N], const char* dfn) {
 int main()
 {
 	readS(S, dataFileName);
-	int iter = 230;
-	double lambda = 0.9;
+	
 	for(int m=0; m<iter; m++) {
 	//update responsibility
 		for(int i=0; i<N; i++) {
@@ -118,6 +126,7 @@ int main()
 	}
 	//output the assignment
 	for(int i=0; i<N; i++) {
+		//since the index of data points starts from zero, I add 1 to let it start from 1
 		cout << idx[i]+1 << endl; 
 	}
 }
