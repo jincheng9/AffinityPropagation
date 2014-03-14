@@ -26,7 +26,7 @@ void readS(double S[N][N], string dfn) {
 		for(int j=i+1; j<N; j++) {
 			S[i][j] = -((dataPoint[i][0]-dataPoint[j][0])*(dataPoint[i][0]-dataPoint[j][0])+(dataPoint[i][1]-dataPoint[j][1])*(dataPoint[i][1]-dataPoint[j][1]));
 			S[j][i] = S[i][j];
-			tmpS.push_back(S[i][j]);
+			tmpS.push_back(S[i][j]); 
 		}
 	}
 	//compute preferences for all data points: median 
