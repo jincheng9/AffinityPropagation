@@ -9,10 +9,11 @@ const int N = 25;
 double S[N][N] = {0};
 double R[N][N] = {0};
 double A[N][N] = {0};
-string dataFileName = "ToyProblemData.txt";
-void readS(double S[N][N], string dfn) {
+const char* dataFileName = "ToyProblemData.txt";
+void readS(double S[N][N], const char* dfn) {
 	//read data 
-	ifstream myfile("ToyProblemData.txt");
+	ifstream myfile(dfn);
+	
 	double dataPoint[N][2] = {0};
 	for(int i=0; i<N; i++) {
 		myfile >> dataPoint[i][0] >> dataPoint[i][1];
@@ -20,7 +21,7 @@ void readS(double S[N][N], string dfn) {
 	myfile.close();
 	
 	int size = N*(N-1)/2;
-	vector<double> tmpS(size);
+	vector<double> tmpS;
 	//compute similarity between data point i and j (i is not equal to j)
 	for(int i=0; i<N-1; i++) {
 		for(int j=i+1; j<N; j++) {
@@ -44,6 +45,7 @@ int main()
 {
 	readS(S, dataFileName);
 	int iter = 230;
+	double lambda = 0.9;
 	for(int m=0; m<iter; m++) {
 	//update responsibility
 		for(int i=0; i<N; i++) {
@@ -57,7 +59,7 @@ int main()
 					if(S[i][kk]+A[i][kk]>max) 
 						max = S[i][kk]+A[i][kk];
 				}
-				R[i][k] = S[i][k] - max;
+				R[i][k] = (1-lambda)*(S[i][k] - max) + lambda*R[i][k];
 			}
 		}
 	//update availability
@@ -71,7 +73,7 @@ int main()
 					for(int ii=i+1; ii<N; ii++) {
 						sum += max(0.0, R[ii][k]);
 					}
-					A[i][k] = sum;
+					A[i][k] = (1-lambda)*sum + lambda*A[i][k];
 				} else {
 					double sum = 0.0;
 					int maxik = max(i, k);
@@ -85,7 +87,7 @@ int main()
 					for(int ii=maxik+1; ii<N; ii++) {
 						sum += max(0.0, R[ii][k]);
 					}
-					A[i][k] = min(0.0, R[k][k]+sum);
+					A[i][k] = (1-lambda)*min(0.0, R[k][k]+sum) + lambda*A[i][k];
 				}
 			}
 		}
@@ -93,20 +95,31 @@ int main()
 	
 	//find the exemplar
 	double E[N][N] = {0};
-	vector<int> center(10);
-	int num = 0;
+	vector<int> center;
 	for(int i=0; i<N; i++) {
 		E[i][i] = R[i][i] + A[i][i];
 		if(E[i][i]>0) {
 			center.push_back(i);
-			num++;
 		}
 	}
-	cout << num << endl;
-	for(int i=0; i<num; i++) {
-		cout << center[i] << endl;
+	//data point assignment
+	int idx[N] = {0};
+	for(int i=0; i<N; i++) {
+		int idxForI = 0;
+		double maxSim = -1e100;
+		for(int j=0; j<center.size(); j++) {
+			int c = center[j];
+			if (S[i][c]>maxSim) {
+				maxSim = S[i][c];
+				idxForI = c;
+			}
+		}
+		idx[i] = idxForI;
 	}
-	
+	//output the assignment
+	for(int i=0; i<N; i++) {
+		cout << idx[i]+1 << endl; 
+	}
 }
 
 
