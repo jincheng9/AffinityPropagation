@@ -110,7 +110,7 @@ int main()
 			center.push_back(i);
 		}
 	}
-	//data point assignment
+	//data point assignment, idx[i] is the exemplar for data point i
 	int idx[N] = {0};
 	for(int i=0; i<N; i++) {
 		int idxForI = 0;
