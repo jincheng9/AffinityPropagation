@@ -1,16 +1,35 @@
-C++ Implementation for Affinity Propagation
+=============
+ DESCRIPTION
+=============
+
+This code is the implementation of affinity propagation, a clustering algorithm by passing messages between data points.
+
+In this code, I cluster two-dimensional data points. 
  
 The code is based on Brendan Frey's science paper "Clustering by Passing Messages between Data Points" published in 2007.
 
 http://www.sciencemag.org/content/315/5814/972.short
+
+=============
+ Prepare
+============= 
+
+Prepare a file named "ToyProblemData.txt" which stores the two-dimensional data points and put this file in the same directory as the source code. 
+
+In this file, there are two real numbers in each line, which is separated by a space. 
+
+The first number is the x coordinate and the second number is the y coordinate.
  
- 
-*Compile*
+=============
+ Compile
+=============
 
 g++ affinity_propagation -o ap
 
 
-*Execute*
+=============
+ Run
+=============
 
 ap
 
