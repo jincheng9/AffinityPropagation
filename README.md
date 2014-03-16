@@ -2,7 +2,7 @@
  DESCRIPTION
 =============
 
-This code is the implementation of affinity propagation, a clustering algorithm by passing messages between data points.
+This code is the C++ implementation of affinity propagation, a clustering algorithm by passing messages between data points.
 
 In this code, I cluster two-dimensional data points. 
  
