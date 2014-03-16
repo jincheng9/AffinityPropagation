@@ -34,7 +34,8 @@ g++ affinity_propagation -o ap
 ap
 
 
-This implementation has passed the test cases provided by this url:
+
+This implementation has passed the test cases provided by the author of affinity propagation:
 
 http://www.psi.toronto.edu/index.php?q=affinity%20propagation
 
