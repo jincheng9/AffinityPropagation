@@ -6,9 +6,10 @@ This code is the C++ implementation of affinity propagation, a clustering algori
 
 In this code, I cluster two-dimensional data points. 
  
-The code is based on Brendan Frey's science paper "Clustering by Passing Messages between Data Points" published in 2007.
+The code is based on Michael Pfeiffer slides about affinity propagation. 
 
-http://www.sciencemag.org/content/315/5814/972.short
+http://www.igi.tugraz.at/lehre/MLA/WS07/MLA_AffinityPropagation.pdf.
+
 
 =============
  Prepare
@@ -40,4 +41,4 @@ This implementation has passed the test cases provided by the author of affinity
 http://www.psi.toronto.edu/index.php?q=affinity%20propagation
 
  
-Reference: Clustering by Passing Messages between Data Points
+Reference: "Clustering by Passing Messages between Data Points", Brendan J. Frey, Delbert Dueck, Science 2007. 
