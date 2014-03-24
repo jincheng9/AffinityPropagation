@@ -4,7 +4,8 @@
 
 This code is the C++ implementation of affinity propagation, a clustering algorithm by passing messages between data points.
 
-In this code, I cluster two-dimensional data points. 
+In this code, I cluster two-dimensional data points. The similarity between data points is the Eculidean distance. 
+The preference of each data point is set as the median of all non-diagnoal elements of the similarity matrix. 
  
 The code is based on Michael Pfeiffer slides about affinity propagation. 
 
